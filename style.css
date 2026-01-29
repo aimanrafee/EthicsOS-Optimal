@@ -32,6 +32,16 @@ body {
 h1 { font-weight: 300; letter-spacing: -1px; }
 .tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; }
 
+/* Tambahan Kod Jam (Sovereign Clock) */
+.clock-display {
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    font-variant-numeric: tabular-nums; /* Supaya nombor tak melompat */
+    text-shadow: 0 0 20px rgba(129, 178, 154, 0.3);
+}
+
 .status-card {
     margin: 2rem 0;
     background: rgba(0,0,0,0.2);
