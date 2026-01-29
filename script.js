@@ -135,9 +135,21 @@ function takeBreak() {
     document.body.style.backgroundColor = "#141e1b"; 
 }
 
+/**
+ * 5. PWA SERVICE WORKER REGISTRATION
+ * Membolehkan OS/Launcher dipasang pada telefon dan berjalan tanpa internet.
+ */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log("EthicsOS: PWA Service Worker Active", reg.scope))
+        .catch(err => console.log("PWA Error:", err));
+    });
+}
+
 // Menjalankan Heartbeat Sistem setiap saat
 setInterval(updateSovereignSystem, 1000);
 
 // Inisialisasi awal semasa sistem mula
 updateSovereignSystem();
-console.log("EthicsOS Optimal: Productivity Suite Initialized.");
+console.log("EthicsOS Optimal: Productivity Suite & PWA Engine Initialized.");
