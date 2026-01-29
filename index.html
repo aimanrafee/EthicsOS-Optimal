@@ -10,7 +10,6 @@
     <div class="glass-container">
         <header>
             <div id="sovereign-clock" class="clock-display">00:00:00</div> 
-            
             <h1 class="fade-in">EthicsOS Optimal</h1>
             <p class="tagline">Solid 2050 Architecture</p>
         </header>
@@ -30,9 +29,28 @@
                 </div>
             </section>
 
+            <div class="app-grid">
+                <div class="app-item" onclick="launchApp('Bio-Monitor')">
+                    <div class="app-icon bio-icon">🩺</div>
+                    <span>Bio-Monitor</span>
+                </div>
+                <div class="app-item" onclick="launchApp('Vault')">
+                    <div class="app-icon vault-icon">🔐</div>
+                    <span>Vault</span>
+                </div>
+                <div class="app-item" onclick="launchApp('Neural')">
+                    <div class="app-icon neural-icon">🧠</div>
+                    <span>Neural</span>
+                </div>
+                <div class="app-item" onclick="launchApp('Settings')">
+                    <div class="app-icon settings-icon">⚙️</div>
+                    <span>Settings</span>
+                </div>
+            </div>
+
             <section class="action-zone">
                 <button onclick="takeBreak()" class="btn-optimal">Start Focus Session</button>
-                <p id="message">Eye-strain protection is enabled.</p>
+                <p id="message">Sovereign System Ready.</p>
             </section>
         </main>
 
