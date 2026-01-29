@@ -11,9 +11,9 @@ const state = {
  */
 function updateSovereignSystem() {
     // Kemaskini Jam (Sovereign Clock)
-    const now = new Date();
     const clockElement = document.getElementById('sovereign-clock');
     if (clockElement) {
+        const now = new Date();
         const hours = String(now.getHours()).padStart(2, '0');
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
@@ -42,31 +42,52 @@ function updateSovereignSystem() {
 }
 
 /**
- * 2. APP LAUNCHER LOGIC
- * Menguruskan pembukaan aplikasi daripada App Grid.
+ * 2. APP LAUNCHER LOGIC (Updated for Productivity Suite)
+ * Menguruskan pembukaan aplikasi harian EthicsOS.
  */
 function launchApp(appName) {
     const message = document.getElementById('message');
+    const container = document.querySelector('.glass-container');
     
-    // Kesan visual semasa 'loading'
+    // Efek visual 'Deep Link' (Gegaran lembut)
+    container.style.transform = "scale(0.97)";
+    setTimeout(() => container.style.transform = "scale(1)", 100);
+
+    // Animasi 'Loading' Sistem Sovereign
     message.style.opacity = "0.5";
-    message.innerText = `Launching ${appName}...`;
+    message.innerText = `Booting ${appName}...`;
     message.style.color = "#81b29a";
 
     setTimeout(() => {
         message.style.opacity = "1";
-        if(appName === 'Bio-Monitor') {
-            message.innerText = `[CORE] Temp: ${state.temp}°C. Hardware Status: Optimal.`;
-        } else if(appName === 'Vault') {
-            message.innerText = "Vault: Neural-Encryption active. No leaks detected.";
-        } else if(appName === 'Neural') {
-            message.innerText = "Neural: Algorithm 2050 is syncing with Local Core.";
-        } else if(appName === 'Settings') {
-            message.innerText = "Settings: Thermal limit fixed at 38°C.";
-        } else {
-            message.innerText = `${appName} is operating in Sovereign Mode.`;
+        
+        switch(appName) {
+            case 'Sovereign-Talk':
+                message.innerText = "Talk: Peer-to-Peer link ready. No server active.";
+                message.style.color = "#81b29a";
+                break;
+                
+            case 'Deep-Notes':
+                // Simulasi memori ringan (Prinsip Solid 2050)
+                message.innerText = "Notes: Local Markdown engine active. 0.01% Storage used.";
+                message.style.color = "#e0e0e0";
+                break;
+                
+            case 'Moments':
+                message.innerText = "Moments: Camera sensor optimized for 38°C limit.";
+                message.style.color = "#e0e0e0";
+                break;
+                
+            case 'Ethics-AI':
+                message.innerText = "Sovereign AI: Edge-Inference model loaded. 100% Offline.";
+                message.style.color = "#ffb703"; // Warna emas untuk AI
+                break;
+                
+            default:
+                message.innerText = `${appName} is operating in Sovereign Mode.`;
+                message.style.color = "#e0e0e0";
         }
-    }, 800);
+    }, 600);
 }
 
 /**
@@ -87,7 +108,7 @@ function systemAction(type) {
     } else if (type === 'back') {
         message.innerText = "System: Back to previous process.";
     } else if (type === 'recent') {
-        message.innerText = "System: Listing active Sovereign tasks...";
+        message.innerText = "System: Scanning active Sovereign tasks...";
     }
 }
 
@@ -114,9 +135,9 @@ function takeBreak() {
     document.body.style.backgroundColor = "#141e1b"; 
 }
 
-// Menjalankan Heartbeat Sistem
+// Menjalankan Heartbeat Sistem setiap saat
 setInterval(updateSovereignSystem, 1000);
 
-// Mula sistem
+// Inisialisasi awal semasa sistem mula
 updateSovereignSystem();
-console.log("EthicsOS Optimal: Full Mobile Logic Initialized.");
+console.log("EthicsOS Optimal: Productivity Suite Initialized.");
