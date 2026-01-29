@@ -1,4 +1,4 @@
-/* EthicsOS Optimal Design System */
+/* EthicsOS Optimal Design System - Solid 2050 */
 :root {
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
@@ -33,7 +33,7 @@ body {
 }
 
 h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
-.tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1.5rem; }
+.tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; }
 
 /* Sovereign Clock (Jam Digital) */
 .clock-display {
@@ -46,31 +46,81 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     transition: color 0.5s ease;
 }
 
-/* Status & Metrics Card */
+/* Status & Metrics Card (Widget Style) */
 .status-card {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
     background: rgba(0,0,0,0.2);
     padding: 1rem;
     border-radius: 15px;
 }
 
-.status-card h2 { font-size: 0.9rem; opacity: 0.7; margin-bottom: 10px; font-weight: 400; }
+.status-card h2 { font-size: 0.8rem; opacity: 0.6; margin-bottom: 8px; font-weight: 400; text-transform: uppercase; }
 
 .metrics {
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
 }
 
 .metric span { display: block; font-size: 0.7rem; opacity: 0.6; }
 .metric strong { font-size: 1.1rem; transition: color 0.3s ease; }
 
-/* Action Buttons */
+/* --- App Grid Style (Home Screen) --- */
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 1.5rem 0;
+    padding: 10px;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.app-item:active { transform: scale(0.9); }
+
+.app-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 18px; /* Gaya Squircle Apple/Android */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+}
+
+.app-item:hover .app-icon {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.app-item span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+}
+
+/* Warna Ikon Spesifik (Aksen Bawah) */
+.bio-icon { border-bottom: 3px solid #e63946; }
+.vault-icon { border-bottom: 3px solid #81b29a; }
+.neural-icon { border-bottom: 3px solid #3d5a80; }
+.settings-icon { border-bottom: 3px solid #9e9e9e; }
+
+/* Action Buttons & Message Zone */
 .btn-optimal {
     background-color: var(--accent-color);
     color: #1a1a1a;
     border: none;
-    padding: 12px 24px;
+    padding: 10px 24px;
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
@@ -80,19 +130,18 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
 }
 
 .btn-optimal:hover { transform: scale(1.02); opacity: 0.9; }
-.btn-optimal:active { transform: scale(0.98); }
 
-#message { font-size: 0.8rem; opacity: 0.7; min-height: 2.5rem; padding: 0 10px; }
+#message { font-size: 0.8rem; opacity: 0.7; min-height: 2.5rem; padding: 0 10px; line-height: 1.4; }
 
-footer { margin-top: 1rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 1px; }
+footer { margin-top: 0.5rem; opacity: 0.3; font-size: 0.65rem; letter-spacing: 1px; }
 
-/* --- Mobile Navigation Bar (Sistem Android/iOS Gesture) --- */
+/* --- Mobile Navigation Bar (Gestures) --- */
 .mobile-nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -120,6 +169,6 @@ footer { margin-top: 1rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 1px;
     box-shadow: 0 0 10px var(--accent-color);
 }
 
-/* Animations */
+/* Animation */
 .fade-in { animation: fadeIn 2s; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
