@@ -16,46 +16,49 @@
 
         <main>
             <section class="status-card">
-                <h2>System Status</h2>
+                <h2>Live Sovereign Metrics</h2>
                 <div class="metrics">
                     <div class="metric">
                         <span>Thermal (Core)</span>
-                        <strong id="temp">36°C</strong>
+                        <strong id="temp">36.0°C</strong>
                     </div>
                     <div class="metric">
-                        <span>Focus Mode</span>
-                        <strong id="focus-status">Active</strong>
+                        <span>Data State</span>
+                        <strong id="focus-status">Offline</strong>
                     </div>
                 </div>
             </section>
 
             <div class="app-grid">
-                <div class="app-item" onclick="launchApp('Bio-Monitor')">
-                    <div class="app-icon bio-icon">🩺</div>
-                    <span>Bio-Monitor</span>
+                <div class="app-item" onclick="launchApp('Sovereign-Talk')">
+                    <div class="app-icon dialer-icon">📞</div>
+                    <span>Talk</span>
                 </div>
-                <div class="app-item" onclick="launchApp('Vault')">
-                    <div class="app-icon vault-icon">🔐</div>
-                    <span>Vault</span>
+                
+                <div class="app-item" onclick="launchApp('Deep-Notes')">
+                    <div class="app-icon notes-icon">📝</div>
+                    <span>Notes</span>
                 </div>
-                <div class="app-item" onclick="launchApp('Neural')">
-                    <div class="app-icon neural-icon">🧠</div>
-                    <span>Neural</span>
+                
+                <div class="app-item" onclick="launchApp('Moments')">
+                    <div class="app-icon moments-icon">📸</div>
+                    <span>Moments</span>
                 </div>
-                <div class="app-item" onclick="launchApp('Settings')">
-                    <div class="app-icon settings-icon">⚙️</div>
-                    <span>Settings</span>
+                
+                <div class="app-item" onclick="launchApp('Ethics-AI')">
+                    <div class="app-icon ai-icon">🤖</div>
+                    <span>Sovereign AI</span>
                 </div>
             </div>
 
             <section class="action-zone">
                 <button onclick="takeBreak()" class="btn-optimal">Start Focus Session</button>
-                <p id="message">Sovereign System Ready.</p>
+                <p id="message">Offline Mode: Data secured locally.</p>
             </section>
         </main>
 
         <footer>
-            <p>Sovereign. Private. Human.</p>
+            <p>Designed for Longevity (6-7 Years)</p>
         </footer>
 
         <nav class="mobile-nav">
