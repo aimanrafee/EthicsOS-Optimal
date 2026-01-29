@@ -16,8 +16,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden; /* Elakkan skrol yang tidak perlu */
 }
 
+/* Container Utama (Gaya Smartphone) */
 .glass-container {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -27,27 +29,32 @@ body {
     width: 350px;
     text-align: center;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-h1 { font-weight: 300; letter-spacing: -1px; }
-.tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; }
+h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
+.tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1.5rem; }
 
-/* Tambahan Kod Jam (Sovereign Clock) */
+/* Sovereign Clock (Jam Digital) */
 .clock-display {
     font-size: 2.5rem;
     font-weight: 200;
     margin-bottom: 0.5rem;
     color: var(--accent-color);
-    font-variant-numeric: tabular-nums; /* Supaya nombor tak melompat */
+    font-variant-numeric: tabular-nums;
     text-shadow: 0 0 20px rgba(129, 178, 154, 0.3);
+    transition: color 0.5s ease;
 }
 
+/* Status & Metrics Card */
 .status-card {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     background: rgba(0,0,0,0.2);
     padding: 1rem;
     border-radius: 15px;
 }
+
+.status-card h2 { font-size: 0.9rem; opacity: 0.7; margin-bottom: 10px; font-weight: 400; }
 
 .metrics {
     display: flex;
@@ -56,7 +63,9 @@ h1 { font-weight: 300; letter-spacing: -1px; }
 }
 
 .metric span { display: block; font-size: 0.7rem; opacity: 0.6; }
+.metric strong { font-size: 1.1rem; transition: color 0.3s ease; }
 
+/* Action Buttons */
 .btn-optimal {
     background-color: var(--accent-color);
     color: #1a1a1a;
@@ -65,11 +74,52 @@ h1 { font-weight: 300; letter-spacing: -1px; }
     border-radius: 12px;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.btn-optimal:hover { transform: scale(1.05); }
+.btn-optimal:hover { transform: scale(1.02); opacity: 0.9; }
+.btn-optimal:active { transform: scale(0.98); }
 
-/* Animation */
+#message { font-size: 0.8rem; opacity: 0.7; min-height: 2.5rem; padding: 0 10px; }
+
+footer { margin-top: 1rem; opacity: 0.4; font-size: 0.7rem; letter-spacing: 1px; }
+
+/* --- Mobile Navigation Bar (Sistem Android/iOS Gesture) --- */
+.mobile-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-item {
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.4;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item:hover { opacity: 1; color: var(--accent-color); }
+
+.home-indicator {
+    width: 40px;
+    height: 4px;
+    background: var(--text-color);
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+.nav-item.home:hover .home-indicator {
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Animations */
 .fade-in { animation: fadeIn 2s; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
