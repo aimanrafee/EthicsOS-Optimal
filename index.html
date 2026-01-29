@@ -39,6 +39,18 @@
         <footer>
             <p>Sovereign. Private. Human.</p>
         </footer>
+
+        <nav class="mobile-nav">
+            <div class="nav-item" onclick="systemAction('back')" title="Back">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </div>
+            <div class="nav-item home" onclick="systemAction('home')" title="Home">
+                <div class="home-indicator"></div>
+            </div>
+            <div class="nav-item" onclick="systemAction('recent')" title="Recent Tasks">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
+            </div>
+        </nav>
     </div>
 
     <script src="script.js"></script>
