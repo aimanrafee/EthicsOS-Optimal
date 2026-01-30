@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EthicsOS Optimal | Sovereign UI</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#81b29a">
 </head>
 <body>
     <div class="glass-container">
@@ -72,6 +74,18 @@
                 <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
             </div>
         </nav>
+    </div>
+
+    <div id="notes-app" class="app-overlay">
+        <div class="app-header">
+            <button onclick="closeApp('notes-app')" class="btn-back">← Back</button>
+            <h2>Deep-Notes</h2>
+            <button onclick="saveNote()" class="btn-save">Secure Save</button>
+        </div>
+        <div class="notes-content">
+            <textarea id="note-input" placeholder="Start writing your thoughts... (Data stays offline)"></textarea>
+        </div>
+        <div id="save-status">Auto-save active</div>
     </div>
 
     <script src="script.js"></script>
