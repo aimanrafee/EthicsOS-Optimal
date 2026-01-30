@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>EthicsOS Optimal | Sovereign UI</title>
-    
+    <title>EthicsOS Optimal</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#81b29a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,14 +20,8 @@
             <section class="status-card">
                 <h2>Live Sovereign Metrics</h2>
                 <div class="metrics">
-                    <div class="metric">
-                        <span>Thermal (Core)</span>
-                        <strong id="temp">36.0°C</strong>
-                    </div>
-                    <div class="metric">
-                        <span>Data State</span>
-                        <strong id="focus-status">Offline</strong>
-                    </div>
+                    <div class="metric"><span>Thermal</span><strong id="temp">36.0°C</strong></div>
+                    <div class="metric"><span>State</span><strong id="focus-status">Offline</strong></div>
                 </div>
             </section>
 
@@ -40,17 +30,14 @@
                     <div class="app-icon dialer-icon">📞</div>
                     <span>Talk</span>
                 </div>
-                
                 <div class="app-item" onclick="launchApp('Deep-Notes')">
                     <div class="app-icon notes-icon">📝</div>
                     <span>Notes</span>
                 </div>
-                
                 <div class="app-item" onclick="launchApp('Moments')">
                     <div class="app-icon moments-icon">📸</div>
                     <span>Moments</span>
                 </div>
-                
                 <div class="app-item" onclick="launchApp('Ethics-AI')">
                     <div class="app-icon ai-icon">🤖</div>
                     <span>Sovereign AI</span>
@@ -59,24 +46,14 @@
 
             <section class="action-zone">
                 <button onclick="takeBreak()" class="btn-optimal">Start Focus Session</button>
-                <p id="message">System Ready: All data stored locally.</p>
+                <p id="message">System Ready: Local Mode</p>
             </section>
         </main>
 
-        <footer>
-            <p>Designed for Longevity (6-7 Years)</p>
-        </footer>
-
         <nav class="mobile-nav">
-            <div class="nav-item" onclick="systemAction('back')" title="Back">
-                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-            </div>
-            <div class="nav-item home" onclick="systemAction('home')" title="Home">
-                <div class="home-indicator"></div>
-            </div>
-            <div class="nav-item" onclick="systemAction('recent')" title="Recent Tasks">
-                <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
-            </div>
+            <div class="nav-item" onclick="systemAction('back')">←</div>
+            <div class="nav-item home" onclick="systemAction('home')"><div class="home-indicator"></div></div>
+            <div class="nav-item" onclick="systemAction('recent')">□</div>
         </nav>
     </div>
 
@@ -84,10 +61,10 @@
         <div class="app-header">
             <button onclick="closeApp('notes-app')" class="btn-back">← Back</button>
             <h2>Deep-Notes</h2>
-            <button onclick="saveNote()" class="btn-save">Secure Save</button>
+            <button onclick="saveNote()" class="btn-save">Save</button>
         </div>
         <div class="notes-content">
-            <textarea id="note-input" placeholder="Start writing your thoughts... (Data stays offline)"></textarea>
+            <textarea id="note-input" placeholder="Write here..."></textarea>
         </div>
         <div id="save-status">Auto-save active</div>
     </div>
