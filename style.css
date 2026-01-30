@@ -2,8 +2,10 @@
 :root {
     --bg-color: #1a1a1a;
     --text-color: #e0e0e0;
-    --accent-color: #81b29a; /* Sage Green - Tenang untuk mata */
+    --accent-color: #81b29a; /* Sage Green - Calm for the eyes */
     --glass-bg: rgba(255, 255, 255, 0.05);
+    --danger-color: #e63946;
+    --ai-gold: #ffb703;
 }
 
 body {
@@ -16,10 +18,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden; /* Elakkan skrol yang tidak perlu */
+    overflow: hidden; /* Prevent unnecessary scrolling */
 }
 
-/* Container Utama (Gaya Smartphone) */
+/* --- Main Container (Smartphone Style) --- */
 .glass-container {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -35,7 +37,7 @@ body {
 h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
 .tagline { color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 1rem; }
 
-/* Sovereign Clock (Jam Digital) */
+/* Sovereign Clock */
 .clock-display {
     font-size: 2.5rem;
     font-weight: 200;
@@ -46,7 +48,7 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     transition: color 0.5s ease;
 }
 
-/* Status & Metrics Card (Widget Style) */
+/* Status & Metrics Card */
 .status-card {
     margin: 1rem 0;
     background: rgba(0,0,0,0.2);
@@ -64,7 +66,7 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
 .metric span { display: block; font-size: 0.7rem; opacity: 0.6; }
 .metric strong { font-size: 1.1rem; transition: color 0.3s ease; }
 
-/* --- App Grid Style (Home Screen) --- */
+/* --- App Grid Style --- */
 .app-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -87,7 +89,7 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     width: 60px;
     height: 60px;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 18px; /* Gaya Squircle Apple/Android */
+    border-radius: 18px; /* Squircle Style */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,9 +100,7 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     transition: background 0.3s;
 }
 
-.app-item:hover .app-icon {
-    background: rgba(255, 255, 255, 0.15);
-}
+.app-item:hover .app-icon { background: rgba(255, 255, 255, 0.15); }
 
 .app-item span {
     font-size: 0.75rem;
@@ -109,13 +109,78 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     letter-spacing: 0.5px;
 }
 
-/* Warna Ikon Spesifik (Aksen Bawah) */
-.bio-icon { border-bottom: 3px solid #e63946; }
-.vault-icon { border-bottom: 3px solid #81b29a; }
-.neural-icon { border-bottom: 3px solid #3d5a80; }
-.settings-icon { border-bottom: 3px solid #9e9e9e; }
+/* Specific Icon Accent Colors */
+.dialer-icon { border-bottom: 3px solid var(--accent-color); }
+.notes-icon { border-bottom: 3px solid #3d5a80; }
+.moments-icon { border-bottom: 3px solid #9e9e9e; }
+.ai-icon { border-bottom: 3px solid var(--ai-gold); }
 
-/* Action Buttons & Message Zone */
+/* --- App Overlay System (Deep-Notes) --- */
+.app-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.98); /* Deep Dark */
+    backdrop-filter: blur(20px);
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.notes-content { flex-grow: 1; }
+
+#note-input {
+    width: 100%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    outline: none;
+    resize: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-back, .btn-save {
+    background: rgba(129, 178, 154, 0.2);
+    border: 1px solid #81b29a;
+    color: #81b29a;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.btn-save {
+    background: #81b29a;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+.btn-save:active { transform: scale(0.95); }
+
+#save-status {
+    font-size: 0.8rem;
+    color: #81b29a;
+    opacity: 0.6;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Action Zone */
 .btn-optimal {
     background-color: var(--accent-color);
     color: #1a1a1a;
@@ -129,13 +194,11 @@ h1 { font-weight: 300; letter-spacing: -1px; margin-top: 0.5rem; }
     margin-bottom: 10px;
 }
 
-.btn-optimal:hover { transform: scale(1.02); opacity: 0.9; }
-
 #message { font-size: 0.8rem; opacity: 0.7; min-height: 2.5rem; padding: 0 10px; line-height: 1.4; }
 
 footer { margin-top: 0.5rem; opacity: 0.3; font-size: 0.65rem; letter-spacing: 1px; }
 
-/* --- Mobile Navigation Bar (Gestures) --- */
+/* Mobile Navigation */
 .mobile-nav {
     display: flex;
     justify-content: space-around;
@@ -145,15 +208,7 @@ footer { margin-top: 0.5rem; opacity: 0.3; font-size: 0.65rem; letter-spacing: 1
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nav-item {
-    cursor: pointer;
-    color: var(--text-color);
-    opacity: 0.4;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-}
-
+.nav-item { cursor: pointer; color: var(--text-color); opacity: 0.4; transition: 0.3s; }
 .nav-item:hover { opacity: 1; color: var(--accent-color); }
 
 .home-indicator {
@@ -162,11 +217,6 @@ footer { margin-top: 0.5rem; opacity: 0.3; font-size: 0.65rem; letter-spacing: 1
     background: var(--text-color);
     border-radius: 10px;
     opacity: 0.8;
-}
-
-.nav-item.home:hover .home-indicator {
-    background: var(--accent-color);
-    box-shadow: 0 0 10px var(--accent-color);
 }
 
 /* Animation */
