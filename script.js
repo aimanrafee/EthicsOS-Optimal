@@ -7,10 +7,9 @@ const state = {
 
 /**
  * 1. SOVEREIGN SYSTEM HEARTBEAT
- * Manages clock updates, real-time thermal monitoring, and hardware health alerts.
+ * Menguruskan jam, suhu real-time, dan amaran kesihatan hardware.
  */
 function updateSovereignSystem() {
-    // Update Sovereign Clock
     const clockElement = document.getElementById('sovereign-clock');
     if (clockElement) {
         const now = new Date();
@@ -19,22 +18,19 @@ function updateSovereignSystem() {
         const seconds = String(now.getSeconds()).padStart(2, '0');
         clockElement.innerText = `${hours}:${minutes}:${seconds}`;
 
-        // Anti-Fatigue Logic (Visual cue every 20 minutes)
         if (minutes === "20" || minutes === "40" || minutes === "00") {
-            clockElement.style.color = "#ffb703"; // Eye-rest alert (Amber)
+            clockElement.style.color = "#ffb703"; 
         } else {
-            clockElement.style.color = "#81b29a"; // Sovereign Sage Green
+            clockElement.style.color = "#81b29a"; 
         }
     }
 
-    // Thermal Data Simulation (Solid 2050 Principle: 38°C Ceiling)
     state.temp = (35.5 + Math.random() * 2.5).toFixed(1);
     const tempElement = document.getElementById('temp');
     if (tempElement) {
         tempElement.innerText = `${state.temp}°C`;
-        
         if (state.temp >= 37.8) {
-            tempElement.style.color = "#e63946"; // Thermal Danger Alert
+            tempElement.style.color = "#e63946"; 
         } else {
             tempElement.style.color = "#e0e0e0"; 
         }
@@ -43,13 +39,11 @@ function updateSovereignSystem() {
 
 /**
  * 2. APP LAUNCHER & OVERLAY LOGIC
- * Handles the launching of apps and managing the Deep-Notes local vault.
  */
 function launchApp(appName) {
     const message = document.getElementById('message');
     const container = document.querySelector('.glass-container');
     
-    // Haptic Feedback Simulation
     container.style.transform = "scale(0.97)";
     setTimeout(() => container.style.transform = "scale(1)", 100);
 
@@ -57,14 +51,12 @@ function launchApp(appName) {
         const notesApp = document.getElementById('notes-app');
         notesApp.style.display = 'flex';
         
-        // Load data from Local Storage (Sovereign Data)
         const savedNote = localStorage.getItem('ethicsos_note');
         if (savedNote) {
             document.getElementById('note-input').value = savedNote;
         }
         message.innerText = "Deep-Notes: Secure Local Vault opened.";
     } else {
-        // Animation for non-active apps
         message.style.opacity = "0.5";
         message.innerText = `Booting ${appName}...`;
         message.style.color = "#81b29a";
@@ -73,15 +65,13 @@ function launchApp(appName) {
             message.style.opacity = "1";
             switch(appName) {
                 case 'Sovereign-Talk':
-                    message.innerText = "Talk: Peer-to-Peer link secured. Zero-Server mode.";
-                    message.style.color = "#81b29a";
+                    message.innerText = "Talk: P2P link ready. No server active.";
                     break;
                 case 'Moments':
-                    message.innerText = "Moments: Encrypted capture ready. Hardware optimized.";
-                    message.style.color = "#e0e0e0";
+                    message.innerText = "Moments: Encrypted capture ready.";
                     break;
                 case 'Ethics-AI':
-                    message.innerText = "Ethics-AI: Local Edge-Inference active. 100% Private.";
+                    message.innerText = "Sovereign AI: Edge-Inference model loaded.";
                     message.style.color = "#ffb703";
                     break;
                 default:
@@ -91,36 +81,27 @@ function launchApp(appName) {
     }
 }
 
-// Close App Overlays
 function closeApp(appId) {
     document.getElementById(appId).style.display = 'none';
     document.getElementById('message').innerText = "System: Process hibernated.";
 }
 
-// Secure Storage Logic
 function saveNote() {
     const noteContent = document.getElementById('note-input').value;
     const status = document.getElementById('save-status');
-    
-    // Save to LocalStorage (Offline Data Sovereignty)
     localStorage.setItem('ethicsos_note', noteContent);
     
     status.innerText = "Data Secured in Local Vault!";
-    status.style.color = "#ffb703";
-    
     setTimeout(() => {
         status.innerText = "Auto-save active";
-        status.style.color = "#81b29a";
     }, 2000);
 }
 
-// Auto-save Interval (Every 5 seconds)
+// Auto-save setiap 5 saat
 setInterval(() => {
     const notesApp = document.getElementById('notes-app');
     if (notesApp && notesApp.style.display === 'flex') {
-        const content = document.getElementById('note-input').value;
-        localStorage.setItem('ethicsos_note', content);
-        console.log("EthicsOS: Background Auto-save completed.");
+        localStorage.setItem('ethicsos_note', document.getElementById('note-input').value);
     }
 }, 5000);
 
@@ -135,54 +116,38 @@ function systemAction(type) {
     setTimeout(() => container.style.transform = "scale(1)", 150);
 
     if (type === 'home') {
-        message.innerText = "System: Returning to Sovereign Hub.";
-        document.body.style.backgroundColor = "#1a1a1a";
-        // Close all overlays on home press
+        message.innerText = "System: Sovereign Home Active.";
         document.getElementById('notes-app').style.display = 'none';
     } else if (type === 'back') {
-        message.innerText = "System: Previous state restored.";
+        message.innerText = "System: Back to previous process.";
     } else if (type === 'recent') {
-        message.innerText = "System: Scanning active Sovereign processes...";
+        message.innerText = "System: Scanning active tasks...";
     }
 }
 
 /**
- * 4. FOCUS MODE INTERACTION
+ * 4. FOCUS MODE
  */
 function takeBreak() {
     const messageElement = document.getElementById('message');
-    const quotes = [
-        "Talk is cheap. Show me the code. - Linus",
-        "Data is the soul. Keep it sovereign.",
-        "Ethics in code, peace in mind.",
-        "Respect biological limits. Take a breath."
-    ];
-    
+    const quotes = ["Respect biological limits.", "Data is the soul.", "Ethics in code."];
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    
-    messageElement.style.opacity = "0";
-    setTimeout(() => {
-        messageElement.innerText = randomQuote;
-        messageElement.style.opacity = "1";
-    }, 300);
-
+    messageElement.innerText = randomQuote;
     document.body.style.backgroundColor = "#141e1b"; 
 }
 
+// Menjalankan Heartbeat
+setInterval(updateSovereignSystem, 1000);
+updateSovereignSystem();
+
 /**
  * 5. PWA SERVICE WORKER REGISTRATION
+ * Pendaftaran diletakkan di bahagian bawah fail.
  */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
-        .then(reg => console.log("EthicsOS: PWA Engine Online", reg.scope))
-        .catch(err => console.log("PWA Registration Failed:", err));
+        .then(reg => console.log("PWA Active", reg.scope))
+        .catch(err => console.error("PWA Failed", err));
     });
 }
-
-// Start Heartbeat
-setInterval(updateSovereignSystem, 1000);
-
-// Initial System Boot
-updateSovereignSystem();
-console.log("EthicsOS Optimal: System & Local Vault Fully Initialized.");
