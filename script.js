@@ -42,68 +42,103 @@ function updateSovereignSystem() {
 }
 
 /**
- * 2. APP LAUNCHER LOGIC
- * Handles the launching of apps within the Sovereign Productivity Suite.
+ * 2. APP LAUNCHER & OVERLAY LOGIC
+ * Handles the launching of apps and managing the Deep-Notes local vault.
  */
 function launchApp(appName) {
     const message = document.getElementById('message');
     const container = document.querySelector('.glass-container');
     
-    // Haptic Feedback Simulation (Subtle Scale Effect)
+    // Haptic Feedback Simulation
     container.style.transform = "scale(0.97)";
     setTimeout(() => container.style.transform = "scale(1)", 100);
 
-    // Sovereign Loading Animation
-    message.style.opacity = "0.5";
-    message.innerText = `Booting ${appName}...`;
-    message.style.color = "#81b29a";
-
-    setTimeout(() => {
-        message.style.opacity = "1";
+    if (appName === 'Deep-Notes') {
+        const notesApp = document.getElementById('notes-app');
+        notesApp.style.display = 'flex';
         
-        switch(appName) {
-            case 'Sovereign-Talk':
-                message.innerText = "Talk: Peer-to-Peer link secured. Zero-Server mode.";
-                message.style.color = "#81b29a";
-                break;
-                
-            case 'Deep-Notes':
-                message.innerText = "Notes: Markdown engine active. Local storage only.";
-                message.style.color = "#e0e0e0";
-                break;
-                
-            case 'Moments':
-                message.innerText = "Moments: Encrypted capture ready. Hardware optimized.";
-                message.style.color = "#e0e0e0";
-                break;
-                
-            case 'Ethics-AI':
-                message.innerText = "Ethics-AI: Local Edge-Inference active. 100% Private.";
-                message.style.color = "#ffb703"; // Gold accent for AI
-                break;
-                
-            default:
-                message.innerText = `${appName} is operational in Sovereign Mode.`;
-                message.style.color = "#e0e0e0";
+        // Load data from Local Storage (Sovereign Data)
+        const savedNote = localStorage.getItem('ethicsos_note');
+        if (savedNote) {
+            document.getElementById('note-input').value = savedNote;
         }
-    }, 600);
+        message.innerText = "Deep-Notes: Secure Local Vault opened.";
+    } else {
+        // Animation for non-active apps
+        message.style.opacity = "0.5";
+        message.innerText = `Booting ${appName}...`;
+        message.style.color = "#81b29a";
+
+        setTimeout(() => {
+            message.style.opacity = "1";
+            switch(appName) {
+                case 'Sovereign-Talk':
+                    message.innerText = "Talk: Peer-to-Peer link secured. Zero-Server mode.";
+                    message.style.color = "#81b29a";
+                    break;
+                case 'Moments':
+                    message.innerText = "Moments: Encrypted capture ready. Hardware optimized.";
+                    message.style.color = "#e0e0e0";
+                    break;
+                case 'Ethics-AI':
+                    message.innerText = "Ethics-AI: Local Edge-Inference active. 100% Private.";
+                    message.style.color = "#ffb703";
+                    break;
+                default:
+                    message.innerText = `${appName} is operating in Sovereign Mode.`;
+            }
+        }, 600);
+    }
 }
+
+// Close App Overlays
+function closeApp(appId) {
+    document.getElementById(appId).style.display = 'none';
+    document.getElementById('message').innerText = "System: Process hibernated.";
+}
+
+// Secure Storage Logic
+function saveNote() {
+    const noteContent = document.getElementById('note-input').value;
+    const status = document.getElementById('save-status');
+    
+    // Save to LocalStorage (Offline Data Sovereignty)
+    localStorage.setItem('ethicsos_note', noteContent);
+    
+    status.innerText = "Data Secured in Local Vault!";
+    status.style.color = "#ffb703";
+    
+    setTimeout(() => {
+        status.innerText = "Auto-save active";
+        status.style.color = "#81b29a";
+    }, 2000);
+}
+
+// Auto-save Interval (Every 5 seconds)
+setInterval(() => {
+    const notesApp = document.getElementById('notes-app');
+    if (notesApp && notesApp.style.display === 'flex') {
+        const content = document.getElementById('note-input').value;
+        localStorage.setItem('ethicsos_note', content);
+        console.log("EthicsOS: Background Auto-save completed.");
+    }
+}, 5000);
 
 /**
  * 3. SYSTEM ACTIONS (NAVIGATION)
- * Manages Home, Back, and Recent Tasks behavior.
  */
 function systemAction(type) {
     const message = document.getElementById('message');
     const container = document.querySelector('.glass-container');
     
-    // Haptic Feedback Simulation
     container.style.transform = "scale(0.98)";
     setTimeout(() => container.style.transform = "scale(1)", 150);
 
     if (type === 'home') {
         message.innerText = "System: Returning to Sovereign Hub.";
         document.body.style.backgroundColor = "#1a1a1a";
+        // Close all overlays on home press
+        document.getElementById('notes-app').style.display = 'none';
     } else if (type === 'back') {
         message.innerText = "System: Previous state restored.";
     } else if (type === 'recent') {
@@ -136,7 +171,6 @@ function takeBreak() {
 
 /**
  * 5. PWA SERVICE WORKER REGISTRATION
- * Ensures the OS is installable and works offline.
  */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -151,4 +185,4 @@ setInterval(updateSovereignSystem, 1000);
 
 // Initial System Boot
 updateSovereignSystem();
-console.log("EthicsOS Optimal: System Fully Initialized.");
+console.log("EthicsOS Optimal: System & Local Vault Fully Initialized.");
